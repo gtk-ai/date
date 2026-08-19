@@ -30,18 +30,18 @@ Coloca `gtkai.json` en la raíz del repositorio. Campos obligatorios:
 
 | Campo | Qué poner |
 |-------|-----------|
-| `id` | Identificador único con formato `author/<cmd>` |
-| `filters` | Lista con el argv0 interceptado (p. ej. `["date"]`) |
+| `id` | Identificador único del módulo (p. ej. `gtk-ai/ls-native`) |
+| `command` | argv0 interceptado; un solo comando por módulo (p. ej. `"ls"`) |
 | `platforms` | Plataformas soportadas (`linux/amd64`, `darwin/arm64`, …) |
 | `contract` | Siempre `"subprocess/v1"` |
 | `gtkai-core-version` | Versión mínima o exacta del core gtk-ai |
 
-Ejemplo (este módulo):
+Ejemplo genérico:
 
 ```json
 {
-  "id": "gtk-ai/date",
-  "filters": ["date"],
+  "id": "gtk-ai/ls-native",
+  "command": "ls",
   "platforms": ["linux/amd64", "darwin/arm64"],
   "contract": "subprocess/v1",
   "gtkai-core-version": {
@@ -51,11 +51,28 @@ Ejemplo (este módulo):
 }
 ```
 
-### Reglas del `id`
+Ejemplo (este módulo):
 
-- Formato: `^[a-z0-9_-]+/[a-z0-9_-]+$`
-- Para filtros oficiales: `gtk-ai/<cmd>` donde `<cmd>` coincide con el argv0 interceptado y el nombre del repositorio.
-- Terceros usan su propio prefijo: `acme/ls`.
+```json
+{
+  "id": "gtk-ai/date",
+  "command": "date",
+  "platforms": ["linux/amd64", "darwin/arm64"],
+  "contract": "subprocess/v1",
+  "gtkai-core-version": {
+    "version": "0.10.0",
+    "constraint": "min"
+  }
+}
+```
+
+### Reglas del `id` y `command`
+
+- `id`: identificador del módulo con formato `author/<name>`. Puede incluir sufijos (`gtk-ai/ls-native`).
+- `command`: argv0 que intercepta el módulo. **Un solo comando por módulo.**
+- Formato de `id`: `^[a-z0-9_-]+/[a-z0-9_-]+$`
+- Para filtros oficiales: prefijo `gtk-ai/` (p. ej. `gtk-ai/date`, `gtk-ai/ls-native`).
+- Terceros usan su propio prefijo: `acme/ls-native`.
 
 ### Versión del módulo
 
@@ -88,7 +105,7 @@ Expón al menos:
 - **`Rewrite(args []string) ([]string, bool)`** — modifica los argumentos antes de ejecutar el comando. Devuelve `false` si no hay cambios.
 - **`FilterOutput(args, output, exitCode) string`** — transforma la salida del comando.
 
-Define también la constante **`ID`** con el mismo valor que `id` en `gtkai.json`.
+Define también las constantes **`ID`** y **`Command`** con los mismos valores que `id` y `command` en `gtkai.json`.
 
 Consulta `filter/date.go` en este repo como referencia mínima.
 
@@ -185,8 +202,9 @@ echo '{"operation":"rewrite","args":[],"output":"","exit_code":0}' | ./date
 
 - [ ] Repo bajo `gtk-ai/<cmd>`
 - [ ] `go.mod` con `github.com/gtk-ai/<cmd>`
-- [ ] `gtkai.json` con `id` = `gtk-ai/<cmd>`, `filters`, `platforms`, `contract`, `gtkai-core-version`
+- [ ] `gtkai.json` con `id`, `command`, `platforms`, `contract`, `gtkai-core-version`
 - [ ] `filter.ID` == `gtkai.json` → `id`
+- [ ] `filter.Command` == `gtkai.json` → `command`
 - [ ] `cmd/main.go` implementa subprocess/v1
 - [ ] Tests de lógica y de protocolo pasan
 - [ ] Tag semver publicado
