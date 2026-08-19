@@ -22,7 +22,7 @@ gtk-ai/<cmd>/
 └── *_test.go           # tests de lógica y protocolo
 ```
 
-En este repo concreto, `<cmd>` es `date` y el ID del filtro es `gtk-ai/gtkai-date`.
+En este repo concreto, `<cmd>` es `date` y el ID del filtro es `gtk-ai/date`.
 
 ## Paso 1 — Definir el manifiesto (`gtkai.json`)
 
@@ -30,7 +30,7 @@ Coloca `gtkai.json` en la raíz del repositorio. Campos obligatorios:
 
 | Campo | Qué poner |
 |-------|-----------|
-| `id` | Identificador único con formato `author/gtkai-<command>` |
+| `id` | Identificador único con formato `author/<cmd>` |
 | `filters` | Lista con el argv0 interceptado (p. ej. `["date"]`) |
 | `platforms` | Plataformas soportadas (`linux/amd64`, `darwin/arm64`, …) |
 | `contract` | Siempre `"subprocess/v1"` |
@@ -40,7 +40,7 @@ Ejemplo (este módulo):
 
 ```json
 {
-  "id": "gtk-ai/gtkai-date",
+  "id": "gtk-ai/date",
   "filters": ["date"],
   "platforms": ["linux/amd64", "darwin/arm64"],
   "contract": "subprocess/v1",
@@ -53,9 +53,9 @@ Ejemplo (este módulo):
 
 ### Reglas del `id`
 
-- Formato: `^[a-z0-9_-]+/gtkai-[a-z0-9_-]+$`
-- Para filtros oficiales: `gtk-ai/gtkai-<command>` donde `<command>` es el argv0.
-- Terceros usan su propio prefijo: `acme/gtkai-ls`.
+- Formato: `^[a-z0-9_-]+/[a-z0-9_-]+$`
+- Para filtros oficiales: `gtk-ai/<cmd>` donde `<cmd>` coincide con el argv0 interceptado y el nombre del repositorio.
+- Terceros usan su propio prefijo: `acme/ls`.
 
 ### Versión del módulo
 
@@ -148,7 +148,7 @@ gtkai filter install github.com/gtk-ai/<cmd>@v0.1.0 --replace
 Desinstalar:
 
 ```bash
-gtkai filter uninstall gtk-ai/gtkai-<command>
+gtkai filter uninstall gtk-ai/<cmd>
 ```
 
 ## Qué valida el core al instalar
@@ -166,8 +166,8 @@ gtkai filter uninstall gtk-ai/gtkai-<command>
 ## Dónde queda instalado
 
 ```
-~/.gtk-ai/filters/gtk-ai/gtkai-date/
-    gtkai-date      # binario (nombre derivado del id)
+~/.gtk-ai/filters/gtk-ai/date/
+    date            # binario (nombre derivado del id)
     gtkai.json      # copia del manifiesto
 ```
 
@@ -177,15 +177,15 @@ El registro de filtros instalados vive en `~/.gtk-ai/filters.db`.
 
 ```bash
 go test ./...
-go build -o gtkai-date ./cmd/
-echo '{"operation":"rewrite","args":[],"output":"","exit_code":0}' | ./gtkai-date
+go build -o date ./cmd/
+echo '{"operation":"rewrite","args":[],"output":"","exit_code":0}' | ./date
 ```
 
 ## Checklist al crear un módulo nuevo
 
 - [ ] Repo bajo `gtk-ai/<cmd>`
 - [ ] `go.mod` con `github.com/gtk-ai/<cmd>`
-- [ ] `gtkai.json` con `id`, `filters`, `platforms`, `contract`, `gtkai-core-version`
+- [ ] `gtkai.json` con `id` = `gtk-ai/<cmd>`, `filters`, `platforms`, `contract`, `gtkai-core-version`
 - [ ] `filter.ID` == `gtkai.json` → `id`
 - [ ] `cmd/main.go` implementa subprocess/v1
 - [ ] Tests de lógica y de protocolo pasan

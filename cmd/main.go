@@ -1,4 +1,4 @@
-// Binary gtkai-date is the subprocess/v1 filter for the `date` command.
+// Binary date is the subprocess/v1 filter for the `date` command.
 // It reads a single JSON request from stdin, applies the filter logic,
 // and writes a single JSON response to stdout.
 //
@@ -29,7 +29,7 @@ type response struct {
 func main() {
 	var req request
 	if err := json.NewDecoder(os.Stdin).Decode(&req); err != nil {
-		fmt.Fprintf(os.Stderr, "gtkai-date: decode request: %v\n", err)
+		fmt.Fprintf(os.Stderr, "date: decode request: %v\n", err)
 		os.Exit(1)
 	}
 
@@ -46,12 +46,12 @@ func main() {
 		resp.Output = filtered
 		resp.Changed = filtered != req.Output
 	default:
-		fmt.Fprintf(os.Stderr, "gtkai-date: unknown operation %q\n", req.Operation)
+		fmt.Fprintf(os.Stderr, "date: unknown operation %q\n", req.Operation)
 		os.Exit(1)
 	}
 
 	if err := json.NewEncoder(os.Stdout).Encode(resp); err != nil {
-		fmt.Fprintf(os.Stderr, "gtkai-date: encode response: %v\n", err)
+		fmt.Fprintf(os.Stderr, "date: encode response: %v\n", err)
 		os.Exit(1)
 	}
 }
