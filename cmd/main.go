@@ -2,7 +2,7 @@
 // It reads a single JSON request from stdin, applies the filter logic,
 // and writes a single JSON response to stdout.
 //
-// Protocol: subprocess/v1 — see ARCHITECTURE.md for the full spec.
+// Protocol: subprocess/v1 — see HOWTO.md for the module contract.
 package main
 
 import (
