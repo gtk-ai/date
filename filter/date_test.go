@@ -76,24 +76,26 @@ func TestID(t *testing.T) {
 	}
 }
 
-// --- filter.json manifest ---
+// --- gtkai.json manifest ---
 
 func TestManifest(t *testing.T) {
-	data, err := os.ReadFile(filepath.Join("..", "filter.json"))
+	data, err := os.ReadFile(filepath.Join("..", "gtkai.json"))
 	if err != nil {
-		t.Fatalf("read filter.json: %v", err)
+		t.Fatalf("read gtkai.json: %v", err)
 	}
 
 	var m struct {
-		ID              string   `json:"id"`
-		Filters         []string `json:"filters"`
-		Version         string   `json:"version"`
-		Platforms       []string `json:"platforms"`
-		Contract        string   `json:"contract"`
-		MinGtkaiVersion string   `json:"min_gtkai_version"`
+		ID               string   `json:"id"`
+		Filters          []string `json:"filters"`
+		Platforms        []string `json:"platforms"`
+		Contract         string   `json:"contract"`
+		GtkaiCoreVersion struct {
+			Version    string `json:"version"`
+			Constraint string `json:"constraint"`
+		} `json:"gtkai-core-version"`
 	}
 	if err := json.Unmarshal(data, &m); err != nil {
-		t.Fatalf("parse filter.json: %v", err)
+		t.Fatalf("parse gtkai.json: %v", err)
 	}
 	if m.ID != filter.ID {
 		t.Fatalf("manifest id %q != code id %q", m.ID, filter.ID)
@@ -104,8 +106,11 @@ func TestManifest(t *testing.T) {
 	if m.Contract != "subprocess/v1" {
 		t.Fatalf("unexpected contract: %q", m.Contract)
 	}
-	if m.Version == "" || m.MinGtkaiVersion == "" {
-		t.Fatal("version fields must not be empty")
+	if m.GtkaiCoreVersion.Version == "" {
+		t.Fatal("gtkai-core-version.version must not be empty")
+	}
+	if m.GtkaiCoreVersion.Constraint != "min" && m.GtkaiCoreVersion.Constraint != "exact" {
+		t.Fatalf("unexpected gtkai-core-version.constraint: %q", m.GtkaiCoreVersion.Constraint)
 	}
 	if len(m.Platforms) == 0 {
 		t.Fatal("platforms must not be empty")
