@@ -45,7 +45,7 @@ Ejemplo genérico:
   "platforms": ["linux/amd64", "darwin/arm64"],
   "contract": "subprocess/v1",
   "gtkai-core-version": {
-    "version": "0.10.0",
+    "version": "0.11.0",
     "constraint": "min"
   }
 }
@@ -60,7 +60,7 @@ Ejemplo (este módulo):
   "platforms": ["linux/amd64", "darwin/arm64"],
   "contract": "subprocess/v1",
   "gtkai-core-version": {
-    "version": "0.10.0",
+    "version": "0.11.0",
     "constraint": "min"
   }
 }
@@ -79,7 +79,7 @@ Ejemplo (este módulo):
 **No va en el manifiesto.** Se resuelve del tag Git en el momento de instalar:
 
 ```bash
-gtkai filter install github.com/gtk-ai/date@v0.10.0
+gtkai filter install github.com/gtk-ai/date@v0.12.0
 ```
 
 ### `gtkai-core-version`

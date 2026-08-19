@@ -4,7 +4,7 @@
   "platforms": ["linux/amd64", "darwin/arm64"],
   "contract": "subprocess/v1",
   "gtkai-core-version": {
-    "version": "0.10.0",
+    "version": "0.11.0",
     "constraint": "min"
   }
 }

@@ -4,5 +4,5 @@ Filtro externo [`subprocess/v1`](HOWTO.md) para el comando `date`. Este reposito
 
 - **Módulo:** `github.com/gtk-ai/date`
 - **ID:** `gtk-ai/date`
-- **Instalación:** `gtkai filter install github.com/gtk-ai/date@v0.11.0`
+- **Instalación:** `gtkai filter install github.com/gtk-ai/date@v0.12.0`
 - **Guía para crear módulos:** [HOWTO.md](HOWTO.md)
