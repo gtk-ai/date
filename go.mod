@@ -1,3 +1,3 @@
-module github.com/gtk-ai/gtkai-date
+module github.com/gtk-ai/date
 
 go 1.26.1

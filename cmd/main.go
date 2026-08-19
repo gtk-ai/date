@@ -10,7 +10,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/gtk-ai/gtkai-date/filter"
+	"github.com/gtk-ai/date/filter"
 )
 
 type request struct {

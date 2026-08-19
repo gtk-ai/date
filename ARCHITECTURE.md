@@ -44,7 +44,7 @@ Every filter module ships a `gtkai.json` manifest at the repository root. Requir
 Module version is **not** declared in the manifest. It is resolved from the Git tag at install time:
 
 ```bash
-gtkai filter install gtk-ai/gtkai-date@v0.10.0
+gtkai filter install github.com/gtk-ai/date@v0.10.0
 ```
 
 #### gtkai-core-version
@@ -93,9 +93,9 @@ Filter binaries are stored under `~/.gtk-ai/filters/<id>/`, downloaded from GitH
 
 ### Official Filters & install.sh
 
-`install.sh` downloads official filters from repositories matching the `gtk-ai/gtkai-*` pattern by default.
+`install.sh` downloads official filters from repositories under the `gtk-ai/<cmd>` pattern by default.
 
-The reference template repository for building external filters is [`gtk-ai/gtkai-date`](https://github.com/gtk-ai/gtkai-date).
+The reference template repository for building external filters is [`gtk-ai/date`](https://github.com/gtk-ai/date).
 
 ### Built-ins Fallback
 

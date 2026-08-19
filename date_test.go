@@ -1,4 +1,4 @@
-package gtkai_date_test
+package date_test
 
 import (
 	"encoding/json"
@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gtk-ai/gtkai-date/filter"
+	"github.com/gtk-ai/date/filter"
 )
 
 // --- Rewrite ---

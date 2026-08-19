@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gtk-ai/gtkai-date/filter"
+	"github.com/gtk-ai/date/filter"
 )
 
 // --- Rewrite ---
