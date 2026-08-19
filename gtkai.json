@@ -1,5 +1,5 @@
 {
-  "id": "gtk-ai/gtkai-date",
+  "id": "gtk-ai/date",
   "filters": ["date"],
   "platforms": ["linux/amd64", "darwin/arm64"],
   "contract": "subprocess/v1",

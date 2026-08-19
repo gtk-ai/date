@@ -1,4 +1,4 @@
-package gtkai_date_test
+package date_test
 
 import (
 	"encoding/json"
@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gtk-ai/gtkai-date/filter"
+	"github.com/gtk-ai/date/filter"
 )
 
 // --- Rewrite ---
@@ -70,8 +70,8 @@ func TestFilterOutputNonZeroExitPassthrough(t *testing.T) {
 // --- ID ---
 
 func TestID(t *testing.T) {
-	if filter.ID != "gtk-ai/gtkai-date" {
-		t.Fatalf("ID %q does not follow author/gtkai-<command> rule", filter.ID)
+	if filter.ID != "gtk-ai/date" {
+		t.Fatalf("ID %q does not follow author/<cmd> rule", filter.ID)
 	}
 }
 

@@ -1,7 +1,7 @@
-// Package filter implements the gtk-ai/gtkai-date filter logic.
+// Package filter implements the gtk-ai/date filter logic.
 //
 // Contract:
-//   - id:      gtk-ai/gtkai-date
+//   - id:      gtk-ai/date
 //   - filters: date
 //
 // Rewrite: when `date` is called without a format argument (+%...),
@@ -16,8 +16,8 @@ package filter
 import "strings"
 
 const (
-	// ID is the full filter identity following the author/gtkai-<command> rule.
-	ID = "gtk-ai/gtkai-date"
+	// ID is the full filter identity following the author/<cmd> rule.
+	ID = "gtk-ai/date"
 
 	// isoFmt is the injected format when none is provided by the caller.
 	isoFmt = "+%Y-%m-%dT%H:%M:%SZ"

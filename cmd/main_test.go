@@ -14,7 +14,7 @@ import (
 
 func buildBinary(t *testing.T) string {
 	t.Helper()
-	bin := filepath.Join(t.TempDir(), "gtkai-date")
+	bin := filepath.Join(t.TempDir(), "date")
 	cmd := exec.Command("go", "build", "-o", bin, ".")
 	wd, _ := os.Getwd()
 	cmd.Dir = wd
