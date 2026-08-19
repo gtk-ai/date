@@ -2,7 +2,7 @@
 //
 // Contract:
 //   - id:      gtk-ai/date
-//   - filters: date
+//   - command: date
 //
 // Rewrite: when `date` is called without a format argument (+%...),
 // injects +%Y-%m-%dT%H:%M:%SZ so the output is a compact ISO-8601
@@ -16,8 +16,11 @@ package filter
 import "strings"
 
 const (
-	// ID is the full filter identity following the author/<cmd> rule.
+	// ID is the full filter identity following the author/<name> rule.
 	ID = "gtk-ai/date"
+
+	// Command is the argv0 intercepted by this module.
+	Command = "date"
 
 	// isoFmt is the injected format when none is provided by the caller.
 	isoFmt = "+%Y-%m-%dT%H:%M:%SZ"

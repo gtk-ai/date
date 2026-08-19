@@ -85,7 +85,7 @@ func TestManifest(t *testing.T) {
 
 	var manifest struct {
 		ID               string   `json:"id"`
-		Filters          []string `json:"filters"`
+		Command          string   `json:"command"`
 		Platforms        []string `json:"platforms"`
 		Contract         string   `json:"contract"`
 		GtkaiCoreVersion struct {
@@ -99,8 +99,8 @@ func TestManifest(t *testing.T) {
 	if manifest.ID != filter.ID {
 		t.Fatalf("manifest id %q != code id %q", manifest.ID, filter.ID)
 	}
-	if len(manifest.Filters) != 1 || manifest.Filters[0] != "date" {
-		t.Fatalf("unexpected filters list: %v", manifest.Filters)
+	if manifest.Command != filter.Command {
+		t.Fatalf("manifest command %q != code command %q", manifest.Command, filter.Command)
 	}
 	if manifest.Contract != "subprocess/v1" {
 		t.Fatalf("unexpected contract: %q", manifest.Contract)
