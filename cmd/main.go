@@ -1,8 +1,8 @@
-// Binary date is the subprocess/v1 filter for the `date` command.
+// Binary date is the stdin/v1 filter for the `date` command.
 // It reads a single JSON request from stdin, applies the filter logic,
 // and writes a single JSON response to stdout.
 //
-// Protocol: subprocess/v1 — see HOWTO.md for the module contract.
+// Protocol: stdin/v1 — see HOWTO.md for the module contract.
 package main
 
 import (

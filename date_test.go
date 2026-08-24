@@ -102,7 +102,7 @@ func TestManifest(t *testing.T) {
 	if manifest.Command != filter.Command {
 		t.Fatalf("manifest command %q != code command %q", manifest.Command, filter.Command)
 	}
-	if manifest.Contract != "subprocess/v1" {
+	if manifest.Contract != "stdin/v1" {
 		t.Fatalf("unexpected contract: %q", manifest.Contract)
 	}
 	if manifest.GtkaiCoreVersion.Version == "" {

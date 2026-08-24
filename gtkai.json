@@ -2,7 +2,7 @@
   "id": "gtk-ai/date",
   "command": "date",
   "platforms": ["linux/amd64", "darwin/arm64"],
-  "contract": "subprocess/v1",
+  "contract": "stdin/v1",
   "gtkai-core-version": {
     "version": "0.11.0",
     "constraint": "min"

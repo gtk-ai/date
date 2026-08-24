@@ -1,4 +1,4 @@
-// Tests de integración del protocolo subprocess/v1.
+// Tests de integración del protocolo stdin/v1.
 // Compilan el binario en un directorio temporal y verifican el contrato
 // JSON completo: rewrite con y sin formato, filter_output, operación desconocida.
 package main_test
