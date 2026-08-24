@@ -7,7 +7,7 @@ This repository also works as a **template** for building new gtk-ai marketplace
 ## Install
 
 ```bash
-gtkai filter install github.com/gtk-ai/date@v0.13.0
+gtkai plugin install github.com/gtk-ai/date@v0.13.0
 ```
 
 Requires gtkai-core >= 0.11.0.

@@ -7,7 +7,7 @@ Este repositorio es la **plantilla de referencia** para crear módulos externos 
 1. Duplica este repo como `gtk-ai/<cmd>` (por ejemplo `gtk-ai/ls`).
 2. Ajusta `gtkai.json`, `go.mod`, `filter/` y `cmd/`.
 3. Etiqueta una versión semver (`v0.1.0`).
-4. Instala con `gtkai filter install github.com/gtk-ai/<cmd>@v0.1.0`.
+4. Instala con `gtkai plugin install github.com/gtk-ai/<cmd>@v0.1.0`.
 
 ## Estructura del repositorio
 
@@ -79,7 +79,7 @@ Ejemplo (este módulo):
 **No va en el manifiesto.** Se resuelve del tag Git en el momento de instalar:
 
 ```bash
-gtkai filter install github.com/gtk-ai/date@v0.12.0
+gtkai plugin install github.com/gtk-ai/date@v0.12.0
 ```
 
 ### `gtkai-core-version`
@@ -153,19 +153,19 @@ Sustituye `<cmd>` por el nombre del repositorio (argv0 o nombre corto del filtro
 3. Instala:
 
 ```bash
-gtkai filter install github.com/gtk-ai/<cmd>@v0.1.0
+gtkai plugin install github.com/gtk-ai/<cmd>@v0.1.0
 ```
 
 Para reemplazar un filtro activo en el mismo argv0:
 
 ```bash
-gtkai filter install github.com/gtk-ai/<cmd>@v0.1.0 --replace
+gtkai plugin install github.com/gtk-ai/<cmd>@v0.1.0 --replace
 ```
 
 Desinstalar:
 
 ```bash
-gtkai filter uninstall gtk-ai/<cmd>
+gtkai plugin uninstall gtk-ai/<cmd>
 ```
 
 ## Qué valida el core al instalar
